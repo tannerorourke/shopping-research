@@ -1,0 +1,27 @@
+# Copy to settings.toml (git-ignored). Environment variables named in the comments override the file.
+
+[serpapi]
+api_key = ""                    # or SERPAPI_KEY env
+monthly_budget = 250            # hard stop; server refuses calls past this
+cache_ttl_hours = 24
+
+[ebay]
+client_id = ""                  # or EBAY_CLIENT_ID env
+client_secret = ""              # or EBAY_CLIENT_SECRET env
+
+[bestbuy]
+api_key = ""                    # or BESTBUY_API_KEY env
+
+[target]
+enabled = true                  # undocumented RedSky; disable if IP-blocked
+
+[c1]
+enabled = false                 # C1_CHECK_ENABLED env overrides ("true"/"false")
+profile_dir = "~/.best-price/chrome-profile"
+extension_dir = "extensions/c1shopping-unpacked"   # unpacked, NOT .crx
+headless = true                 # requires channel="chromium"; set false to debug
+max_calls_per_session = 2       # finalists only
+idle_close_seconds = 120        # close browser after idle
+timeout_ms = 10000
+retailers = ["amazon.com"]      # domains c1_check will run against
+api_url_filter = ""             # substring of C1's price-compare endpoint; discovered once with headless = false

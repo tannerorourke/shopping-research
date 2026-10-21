@@ -1,0 +1,22 @@
+[project]
+name = "shopping-research"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.15.0",
+    "fastmcp>=4.1.3",
+    "feedparser>=6.0.14",
+    "httpx>=0.28.1",
+    "playwright>=1.64.0",
+    "playwright-stealth>=2.0.3",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

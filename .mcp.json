@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "shopping-research": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "server.py"]
+    }
+  }
+}
