@@ -1,0 +1,12 @@
+{
+  "name": "tannerorourke",
+  "owner": { "name": "Tanner O'Rourke", "url": "https://tannerorourke.dev" },
+  "description": "Plugins by Tanner O'Rourke.",
+  "plugins": [
+    {
+      "name": "shopping-research",
+      "source": "./",
+      "description": "Product search, cross-retailer prices, Amazon price history, and community deals over free sources, with self-reported coverage on every call."
+    }
+  ]
+}

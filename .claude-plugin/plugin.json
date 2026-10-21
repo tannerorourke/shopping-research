@@ -1,0 +1,65 @@
+{
+  "name": "shopping-research",
+  "version": "0.1.0",
+  "description": "Product search, cross-retailer prices, Amazon price history, and community deals over free sources, with self-reported coverage on every call.",
+  "author": { "name": "Tanner O'Rourke", "url": "https://tannerorourke.dev" },
+  "homepage": "https://github.com/tannerorourke/shopping-research-mcp",
+  "repository": "https://github.com/tannerorourke/shopping-research-mcp",
+  "license": "MIT",
+  "keywords": ["shopping", "price comparison", "deals", "price history", "mcp"],
+  "mcpServers": {
+    "shopping-research": {
+      "command": "uv",
+      "args": ["run", "--directory", "${CLAUDE_PLUGIN_ROOT}", "server.py"],
+      "env": {
+        "BEST_PRICE_STATE": "${CLAUDE_PLUGIN_DATA}",
+        "BEST_PRICE_SETTINGS": "${CLAUDE_PLUGIN_DATA}/settings.toml",
+        "SERPAPI_KEY": "${user_config.serpapi_key}",
+        "SERPAPI_MONTHLY_BUDGET": "${user_config.serpapi_monthly_budget}",
+        "EBAY_CLIENT_ID": "${user_config.ebay_client_id}",
+        "EBAY_CLIENT_SECRET": "${user_config.ebay_client_secret}",
+        "BESTBUY_API_KEY": "${user_config.bestbuy_api_key}",
+        "TARGET_ENABLED": "${user_config.target_enabled}"
+      }
+    }
+  },
+  "userConfig": {
+    "serpapi_key": {
+      "type": "string",
+      "title": "SerpApi API key",
+      "description": "Free key from serpapi.com (250 searches a month). Powers Google Shopping search and per-merchant offers. Leave blank to run without it.",
+      "sensitive": true
+    },
+    "serpapi_monthly_budget": {
+      "type": "number",
+      "title": "SerpApi monthly budget",
+      "description": "Hard stop on SerpApi searches per calendar month. The server refuses calls past it.",
+      "default": 250,
+      "min": 0
+    },
+    "ebay_client_id": {
+      "type": "string",
+      "title": "eBay client ID",
+      "description": "Application keyset from developer.ebay.com. Leave blank to skip eBay.",
+      "sensitive": true
+    },
+    "ebay_client_secret": {
+      "type": "string",
+      "title": "eBay client secret",
+      "description": "Paired with the client ID; the server fetches and caches its own OAuth token.",
+      "sensitive": true
+    },
+    "bestbuy_api_key": {
+      "type": "string",
+      "title": "Best Buy API key",
+      "description": "Free key from developer.bestbuy.com. Leave blank to skip Best Buy.",
+      "sensitive": true
+    },
+    "target_enabled": {
+      "type": "boolean",
+      "title": "Query Target",
+      "description": "Target's search endpoint is undocumented and may block automated requests; turn off if it keeps reporting blocked.",
+      "default": true
+    }
+  }
+}

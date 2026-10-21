@@ -9,7 +9,7 @@ import tempfile
 _STATE = tempfile.mkdtemp(prefix="bp-test-")
 os.environ["BEST_PRICE_STATE"] = _STATE
 os.environ["BEST_PRICE_SETTINGS"] = os.path.join(_STATE, "none.toml")
-for _var in ("SERPAPI_KEY", "EBAY_CLIENT_ID", "EBAY_CLIENT_SECRET", "BESTBUY_API_KEY", "C1_CHECK_ENABLED"):
+for _var in ("SERPAPI_KEY", "SERPAPI_MONTHLY_BUDGET", "EBAY_CLIENT_ID", "EBAY_CLIENT_SECRET", "BESTBUY_API_KEY", "TARGET_ENABLED", "C1_CHECK_ENABLED"):
     os.environ.pop(_var, None)
 
 import httpx
